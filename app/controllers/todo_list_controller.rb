@@ -31,4 +31,15 @@ class TodoListController < ApplicationController
     end
   end
 
+  def update
+    begin
+      entry = TodoList.find(params[:id])
+      entry.body = params[:body] if params[:body].present?
+      entry.complete = params[:complete] if params[:complete].present?
+      render json: "(#{entry.id}) #{entry.body} #{entry.complete}", status: 200
+    rescue ActiveRecord::RecordNotFound => error
+      render json: { message: error.message }, status: 404
+    end
+  end
+
 end
