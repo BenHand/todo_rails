@@ -1,8 +1,7 @@
 README
 
 # Todo_List Rails App
-  *  Using URLs and parameters via the <a href="https://chrome.google.com/webstore/detail/postman-rest-client/
-      fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman</a> chrome app, you are able to add/edit/delete/view the contents of a todo list.
+  *  Using URLs and parameters via the <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman</a> chrome app, you are able to add/edit/delete/view the contents of a todo list.
   * This app has a TodoList table with a body(string, null: false) and complete(boolean, default: false) column as
       well as created_at and updated_at timestamps.
 
