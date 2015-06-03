@@ -16,4 +16,9 @@ class TodoListController < ApplicationController
     end
   end
 
+  def create
+    entry = TodoList.create(body: params[:body])
+    render json: entry, status: 200
+  end
+
 end
