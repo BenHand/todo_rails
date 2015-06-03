@@ -21,7 +21,7 @@ README
 ```
 
 ## Use the following URLs and parameters to make use of this program.
-
+```
 * GET http://localhost:3000/todos
           will display all todos
 
@@ -45,7 +45,7 @@ README
 * PUT http://localhost:3000/todos/6 with params { "completed": "true"}
           will display the id, body and completed status of todo reflecting changes requested
           (6) Nobis reprehenderit optio aliquid magni dicta nesciunt. true
-
+```
 
 
 
