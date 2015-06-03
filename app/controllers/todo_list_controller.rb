@@ -21,4 +21,14 @@ class TodoListController < ApplicationController
     render json: entry, status: 200
   end
 
+  def destroy
+    begin
+      entry = TodoList.find(params[:id])
+      render json: "(#{entry.id}) #{entry.body} has been deleted", status: 200
+      TodoList.destroy(entry)
+    rescue ActiveRecord::RecordNotFound => error
+      render json: { message: error.message }, status: 404
+    end
+  end
+
 end

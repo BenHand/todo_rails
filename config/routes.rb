@@ -6,4 +6,6 @@ get 'todos/:id', to: 'todo_list#show'
 
 post '/todos', to: 'todo_list#create'
 
+delete '/todos/:id', to: 'todo_list#destroy'
+
 end
