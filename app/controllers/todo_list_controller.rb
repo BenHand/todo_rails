@@ -8,4 +8,8 @@ class TodoListController < ApplicationController
     render json: TodoList.create(body: '')
   end
 
+  def show
+    render json: TodoList.find(params[:id])
+  end
+
 end
