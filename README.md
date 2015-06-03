@@ -3,23 +3,49 @@ README
 # Todo_List Rails App
   *  Using URLs and parameters via the <a href="https://chrome.google.com/webstore/detail/postman-rest-client/
       fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman</a> chrome app, you are able to add/edit/delete/view the contents of a todo list.
+  * This app has a TodoList table with a body(string, null: false) and complete(boolean, default: false) column as
+      well as created_at and updated_at timestamps.
+
+
+* Rails version 4.2.1
+
 
 ## Do the following to use this program
-
+```
 * Fork this repo.
 * Clone this repo.
 * `bundle install` to install all gems required.
 * `rake db:migrate` to run the migration and update the database.
 * `rake db:seed` to populate your db with 50 randomly generated todos(via <a href="https://rubygems.org/gems/faker/versions/1.4.3">faker</a>).
 * `rails s` to start your local server.
+```
 
-Things you may want to cover:
+## Use the following URLs and parameters to make use of this program.
 
-* Ruby version 4.2.1
+* GET http://localhost:3000/todos
+          will display all todos
 
-* System dependencies
+* GET http://localhost:3000/todos/new
+          will display a new 'empty' todo
 
-* Configuration
+* GET http://localhost:3000/todos/1
+          will display the todo with specified id# (1 in this case)
+
+* GET http://localhost:3000/todos/8989898
+          will display {"Couldn't find TodoList with 'id'=1. Total # of users = 51"}
+
+* POST http://localhost:3000/todos    with params { "body": "todo task" }
+          will display {"id":54,"body":"todo task","complete":false,
+          "created_at":"2015-06-03T18:48:31.036Z","updated_at":"2015-06-03T18:48:31.036Z"}
+
+* DELETE http://localhost:3000/todos/4
+          will display the id and body of todo that has been deleted
+          {(4) Minima neque eaque velit quaerat et. has been deleted}
+
+* PUT http://localhost:3000/todos/6 with params { "completed": "true"}
+          will display the id, body and completed status of todo reflecting changes requested
+          (6) Nobis reprehenderit optio aliquid magni dicta nesciunt. true
+
 
 
 
