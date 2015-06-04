@@ -1,16 +1,16 @@
 class TodoListController < ApplicationController
 
   def index
-    render json: TodoList.all, status: 200
+    render json: TodoList.all
   end
 
   def new
-    render json: TodoList.create(body: ''), status: 200
+    render json: TodoList.create(body: '')
   end
 
   def show
     begin
-      render json: TodoList.find(params[:id]), status: 200
+      render json: TodoList.find(params[:id])
     rescue ActiveRecord::RecordNotFound => error
       render json: { message: "#{error.message}. Total # of users = #{TodoList.count}" }, status: 404
     end
@@ -18,13 +18,13 @@ class TodoListController < ApplicationController
 
   def create
     entry = TodoList.create(body: params[:body])
-    render json: entry, status: 200
+    render json: entry
   end
 
   def destroy
     begin
       entry = TodoList.find(params[:id])
-      render json: "(#{entry.id}) #{entry.body} has been deleted", status: 200
+      render json: "(#{entry.id}) #{entry.body} has been deleted"
       TodoList.destroy(entry)
     rescue ActiveRecord::RecordNotFound => error
       render json: { message: error.message }, status: 404
@@ -37,7 +37,7 @@ class TodoListController < ApplicationController
       entry.body = params[:body] if params[:body].present?
       entry.complete = params[:complete] if params[:complete].present?
       entry.save!
-      render json: "(#{entry.id}) #{entry.body} #{entry.complete}", status: 200
+      render json: "(#{entry.id}) #{entry.body} #{entry.complete}"
     rescue ActiveRecord::RecordNotFound => error
       render json: { message: error.message }, status: 404
     end
