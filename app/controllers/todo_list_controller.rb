@@ -17,7 +17,7 @@ class TodoListController < ApplicationController
   end
 
   def new
-    render 'new.html.erb'
+    render 'index.html.erb'
   end
 
 
@@ -42,7 +42,7 @@ class TodoListController < ApplicationController
     new_todo = TodoList.create(body: params[:body])
     respond_to do |format|
       format.html do
-        render 'new.html.erb', locals: { todos: new_todo }
+        render 'index.html.erb', locals: { todos: TodoList.all }
       end
       format.json do
         render json: new_todo

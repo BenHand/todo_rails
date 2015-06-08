@@ -1,12 +1,18 @@
-<h2>All Todos</h2>
-<ol>
-  <p>       Todo --- Complete? </p>
+<p><h2>All Todos</h2></p>
+<div class="todos">
+  <p> Todo --- Complete? </p>
     <%= form_tag("/todos/delete", method: "delete") do %>
-      <% todos.each do |todo| %>
-        <li>
-          <%= render partial: 'todo_list', locals: { todo: todo } %>
-        </li>
-      <% end %>
+    <div>
+      <ol>
+        <% todos.each do |todo| %>
+          <li>
+            <%= render partial: 'todo_list', locals: { todo: todo } %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+    <p>
       <%= submit_tag("DELETE") %>
+    </p>
     <% end %>
-</ol>
+</div>

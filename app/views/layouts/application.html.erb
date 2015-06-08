@@ -6,20 +6,24 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <header>
+<header>
     <h1> Todo-List </h1>
-    <a href="/todos">Home</a>
-      <div class="create-tag">
-        <%= form_tag("/todos", method: "post") do %>
-          <%= label_tag(:body, "What do you need ToDo?") %>
-          <%= text_field_tag(:body) %>
-          <%= submit_tag("Create") %>
-        <% end %>
-      </div>
+    <nav>
+      <a href="/todos">Home</a>
+        <div class="create-tag">
+          <%= form_tag("/todos", method: "post") do %>
+            <%= label_tag(:body, "What do you need ToDo?") %>
+            <%= text_field_tag(:body) %>
+            <%= submit_tag("Create") %>
+          <% end %>
+        </div>
+    </nav>
   </header>
-<%= yield %>
-  <footer>
-  </footer>
-</body>
+  <body>
+
+
+  <%= yield %>
+    <footer>
+    </footer>
+  </body>
 </html>
