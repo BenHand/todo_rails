@@ -1,34 +1,78 @@
 class TodoListController < ApplicationController
 
   def index
-    render json: TodoList.all
+    all_todos = TodoList.all
+
+    respond_to do |format|
+
+      format.html do
+        render 'index.html.erb', locals: { todos: all_todos }
+      end
+
+      format.json do
+        render json: all_todos
+      end
+
+    end
   end
 
   def new
-    render json: TodoList.create(body: '')
+    render 'new.html.erb'
   end
+
 
   def show
     begin
-      render json: TodoList.find(params[:id])
+      found_todo = TodoList.find(params[:id])
+      respond_to do |format|
+        format.html do
+          render 'show.html.erb', locals: { todos: found_todo }
+        end
+        format.json do
+          render json: found_todo
+        end
+      end
     rescue ActiveRecord::RecordNotFound => error
       render json: { message: "#{error.message}. Total # of users = #{TodoList.count}" }, status: 404
     end
   end
 
+
   def create
-    entry = TodoList.create(body: params[:body])
-    render json: entry
+    new_todo = TodoList.create(body: params[:body])
+    respond_to do |format|
+      format.html do
+        render 'new.html.erb', locals: { todos: new_todo }
+      end
+      format.json do
+        render json: new_todo
+      end
+    end
   end
 
   def destroy
-    begin
-      entry = TodoList.find(params[:id])
-      render json: "(#{entry.id}) #{entry.body} has been deleted"
-      TodoList.destroy(entry)
-    rescue ActiveRecord::RecordNotFound => error
-      render json: { message: error.message }, status: 404
-    end
+      params[:todo_ids].each do |todo|
+        if TodoList.find(todo.to_i)
+          TodoList.destroy(todo.to_i)
+        end
+      end
+      all_todos = TodoList.all
+      render 'index.html.erb', locals: { todos: all_todos }
+    # begin
+    #   found_todo = TodoList.find(params[:id])
+    #   repsond_to do |format|
+    #     format.html do
+    #       render 'destroy.html.erb', locals: { todos: found_todo }
+    #       TodoList.destroy(entry)
+    #     end
+    #     format.json do
+    #       render json: "(#{found_todo.id}) #{found_todo.body} has been deleted"
+    #       TodoList.destroy(entry)
+    #     end
+    #   end
+    # rescue ActiveRecord::RecordNotFound => error
+    #   render json: { message: error.message }, status: 404
+    # end
   end
 
   def update

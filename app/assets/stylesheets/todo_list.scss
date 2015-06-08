@@ -1,3 +1,19 @@
 // Place all the styles related to the todo_list controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$background-primary: blue;
+$text-color-primary: white;
+header {
+
+  background: $background-primary;
+  padding: 5px 0 20px 15px;
+  color: $text-color-primary;
+};
+
+h2{
+  padding-left: 20px;
+};
+
+.create-tag{
+  padding-left: 25px;
+};
