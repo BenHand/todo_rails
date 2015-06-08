@@ -10,19 +10,12 @@
   <header>
     <h1> Todo-List </h1>
     <a href="/todos">Home</a>
-      <p>
-      <%= form_tag("/todos/find", method: "get") do %>
-        <%= label_tag(:id, "Search by ID #") %>
-        <%= text_field_tag(:id) %>
-        <%= submit_tag("  Find  ") %>
-      <% end %>
-      </p>
       <div class="create-tag">
-      <%= form_tag("/todos", method: "post") do %>
-        <%= label_tag(:body, "Todo new?") %>
-        <%= text_field_tag(:body) %>
-        <%= submit_tag("Create") %>
-      <% end %>
+        <%= form_tag("/todos", method: "post") do %>
+          <%= label_tag(:body, "What do you need ToDo?") %>
+          <%= text_field_tag(:body) %>
+          <%= submit_tag("Create") %>
+        <% end %>
       </div>
   </header>
 <%= yield %>

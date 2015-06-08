@@ -51,28 +51,29 @@ class TodoListController < ApplicationController
   end
 
   def destroy
+    begin
       params[:todo_ids].each do |todo|
         if TodoList.find(todo.to_i)
           TodoList.destroy(todo.to_i)
         end
       end
+
       all_todos = TodoList.all
-      render 'index.html.erb', locals: { todos: all_todos }
-    # begin
-    #   found_todo = TodoList.find(params[:id])
-    #   repsond_to do |format|
-    #     format.html do
-    #       render 'destroy.html.erb', locals: { todos: found_todo }
-    #       TodoList.destroy(entry)
-    #     end
-    #     format.json do
-    #       render json: "(#{found_todo.id}) #{found_todo.body} has been deleted"
-    #       TodoList.destroy(entry)
-    #     end
-    #   end
-    # rescue ActiveRecord::RecordNotFound => error
-    #   render json: { message: error.message }, status: 404
-    # end
+
+      respond_to do |format|
+        format.html do
+          render 'index.html.erb', locals: { todos: all_todos }
+        end
+
+        format.json do
+          render json: all_todos
+        end
+      end
+
+    rescue ActiveRecord::RecordNotFound => error
+      render json: { message: error.message }, status: 404
+    end
+
   end
 
   def update

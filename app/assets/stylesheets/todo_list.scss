@@ -3,11 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $background-primary: blue;
 $text-color-primary: white;
+$link-color: limegreen;
 header {
 
   background: $background-primary;
   padding: 5px 0 20px 15px;
   color: $text-color-primary;
+  border: solid red 5px;
+};
+body {
+  margin: 0;
 };
 
 h2{
@@ -16,4 +21,9 @@ h2{
 
 .create-tag{
   padding-left: 25px;
+  float: right;
+};
+
+a {
+  color: $link-color;
 };
