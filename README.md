@@ -19,7 +19,9 @@ README
 * `rails s` to start your local server.
 
 
-## Use the following URLs and parameters to make use of this program.
+
+## Use the following URLs and parameters to make use of this program. (06-08-2015) can now
+  go to the localhost:3000 and use the app interactively using html as well as via postman.g
 ```
 * GET http://localhost:3000/todos
           will display all todos
