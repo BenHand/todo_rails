@@ -1,7 +1,7 @@
 <h2> Requested Todo </h2>
   <%= render partial: 'todo_list', locals: { todo: todos } %>
   <p>
-    <%= form_tag("/todos", method: "post") do %>
+    <%= form_tag("/todos/#{params[:id]}", method: "put") do %>
       <%= label_tag(:body, "What should it be?") %>
       <%= text_field_tag(:body) %>
       <%= submit_tag("SAVE") %>
