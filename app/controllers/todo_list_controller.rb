@@ -69,9 +69,15 @@ class TodoListController < ApplicationController
 
   def update
     begin
-      entry = TodoList.find(params[:id])
+      if params[:todo_ids].present?
+        id = params[:todo_ids][0].to_i
+      else
+        id = TodoList.find(params[:id])
+      end
+
+      entry = TodoList.find(id)
       entry.body = params[:body] if params[:body].present?
-      if params["commit"]
+      if params[:complete] == "true"
         entry.complete = true
       end
       entry.save!
