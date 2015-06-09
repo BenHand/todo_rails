@@ -1,18 +1,20 @@
 // Place all the styles related to the todo_list controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$background-primary-header: black;
+$background-primary: #C10C06;
+$background-secondary: black;
 $text-color-primary: white;
 $link-color: white;
 
 header {
 
-  background: $background-primary-header;
+  background: $background-secondary;
   padding: 5px 0 20px 15px;
   color: $text-color-primary;
   text-shadow: 2px 1px red;
   // border: solid red 5px;
   a {
+
     color: white;
   }
 };
@@ -29,19 +31,19 @@ h2{
 a {
   color: $link-color;
   text-shadow: 2px 1px black;
+  text-decoration: none;
 
 };
 
 body {
   border: solid black 10px;
   margin: 0;
-  background: #C10C06;
+  background: $background-primary;
   background-image: url(http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-get-things-done-34.png);
-  background-size: 70%;
+  background-size: 60%;
   background-position: right;
   background-repeat: no-repeat;
-  opacity: .8;
-  min-height: 800px;
+  // opacity: .8;
 };
 
 .create-tag{
@@ -56,4 +58,9 @@ body {
 p {
   padding-left: 60px;
   color: $text-color-primary;
+};
+
+footer{
+  text-align: center;
+  background: $background-secondary;
 };
