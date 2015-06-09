@@ -20,7 +20,10 @@ header {
 
 h1{
   text-align: center;
+  color: $text-color-primary;
+  text-shadow: 2px 1px black;
 };
+
 h2{
   padding-left: 80px;
   color: $text-color-primary;
@@ -61,4 +64,13 @@ p {
 footer{
   text-align: center;
   background: $background-secondary;
+};
+
+.show{
+  text-align: center;
+  background-image: url(http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-get-things-done-34.png);
+  background-size: 20%;
+  background-position: left;
+  background-repeat: no-repeat;
+
 };
