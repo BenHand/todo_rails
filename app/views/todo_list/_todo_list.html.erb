@@ -1,5 +1,4 @@
 <%= check_box_tag 'todo_ids[]', todo.id, false, :id => "todo_#{todo.id}" %>
-
 <%= link_to "#{todo.body}", controller: "todo_list", action: "show", id: todo.id %> ---
 <%= todo.complete %>
 
