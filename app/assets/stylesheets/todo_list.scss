@@ -38,11 +38,6 @@ body {
   border: solid black 10px;
   margin: 0;
   background: $background-primary;
-  background-image: url(http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-get-things-done-34.png);
-  background-size: 60%;
-  background-position: right;
-  background-repeat: no-repeat;
-  // opacity: .8;
 };
 
 .create-tag{
@@ -52,6 +47,10 @@ body {
 
 .todos {
   padding-left: 20px;
+  background-image: url(http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-get-things-done-34.png);
+  background-size: 50%;
+  background-position: right;
+  background-repeat: no-repeat;
 };
 
 p {
