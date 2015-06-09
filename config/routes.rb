@@ -10,6 +10,7 @@ post '/todos', to: 'todo_list#create'
 delete '/todos/delete', to: 'todo_list#destroy'
 
 put '/todos/:id', to: 'todo_list#update'
+# put '/todos/:complete', to: 'todo_list#update'
 
 root to: 'todo_list#index'
 

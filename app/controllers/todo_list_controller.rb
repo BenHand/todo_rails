@@ -2,17 +2,13 @@ class TodoListController < ApplicationController
 
   def index
     all_todos = TodoList.all
-
     respond_to do |format|
-
       format.html do
         render 'index.html.erb', locals: { todos: all_todos }
       end
-
       format.json do
         render json: all_todos
       end
-
     end
   end
 
@@ -57,32 +53,36 @@ class TodoListController < ApplicationController
           TodoList.destroy(todo.to_i)
         end
       end
-
       all_todos = TodoList.all
-
       respond_to do |format|
         format.html do
           render 'index.html.erb', locals: { todos: all_todos }
         end
-
         format.json do
           render json: all_todos
         end
       end
-
     rescue ActiveRecord::RecordNotFound => error
       render json: { message: error.message }, status: 404
     end
-
   end
 
   def update
     begin
       entry = TodoList.find(params[:id])
       entry.body = params[:body] if params[:body].present?
-      entry.complete = params[:complete] if params[:complete].present?
+      if params["commit"]
+        entry.complete = true
+      end
       entry.save!
-      render json: "(#{entry.id}) #{entry.body} #{entry.complete}"
+      respond_to do |format|
+        format.html do
+          render 'show.html.erb', locals: { todos: entry }
+        end
+        format.json do
+          render json: entry
+        end
+      end
     rescue ActiveRecord::RecordNotFound => error
       render json: { message: error.message }, status: 404
     end

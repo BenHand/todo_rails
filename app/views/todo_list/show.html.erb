@@ -1,9 +1,13 @@
 <h2> Requested Todo </h2>
-  <%= render partial: 'todo_list', locals: { todo: todos } %>
+  <%= form_tag("/todos/#{params[:id]}", method: "put") do %>
+    <%= render partial: 'todo_list', locals: { todo: todos } %>
+  <%= submit_tag("Mark as Completed") %>
+  <% end %>
   <p>
     <%= form_tag("/todos/#{params[:id]}", method: "put") do %>
-      <%= label_tag(:body, "What should it be?") %>
+      <%= label_tag(:body, "Change this todo to > ") %>
       <%= text_field_tag(:body) %>
+      <%= hidden_field_tag(:complete, 'true' ) %>
       <%= submit_tag("SAVE") %>
     <% end %>
   </p>
